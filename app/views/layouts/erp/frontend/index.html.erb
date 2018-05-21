@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <!-- Basic page needs
+    ============================================ -->
+    <title>Bồn Nước Long Nhiên - Công Ty TNHH Sản Xuất Thương Mại Dịch Vụ Phương Tùng</title>
+    <meta charset="utf-8">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="Công Ty TNHH Sản Xuất Thương Mại Dịch Vụ Phương Tùng">
+    <meta name="robots" content="index, follow" />
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+    <%= favicon_link_tag '/longnhien/ico/favicon-16x16.png', rel: 'shortcut icon', rel: '/longnhien/image/png' %>
+
+    <!-- Libs CSS
+    ============================================ -->
+    <%= stylesheet_link_tag '/longnhien/css/bootstrap/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/font-awesome/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag '/longnhien/js/datetimepicker/bootstrap-datetimepicker.min.css' %>
+    <%= stylesheet_link_tag '/longnhien/js/owl-carousel/owl.carousel.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/lib.css' %>
+    <%= stylesheet_link_tag '/longnhien/js/jquery-ui/jquery-ui.min.css' %>
+    <%= stylesheet_link_tag '/longnhien/js/minicolors/miniColors.css' %>
+
+    <!-- Theme CSS
+    ============================================ -->
+    <%= stylesheet_link_tag '/longnhien/css/themecss/so_searchpro.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/so_megamenu.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/so-categories.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/so-listing-tabs.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/so-newletter-popup.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/themecss/slick.css' %>
+    
+    <%= stylesheet_link_tag '/longnhien/css/footer/footer5.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/header/header5.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/home5.css', id: 'color_scheme' %>
+    <%= stylesheet_link_tag '/longnhien/css/responsive.css' %>
+    <%= stylesheet_link_tag '/longnhien/css/custom.css' %>
+
+    <!-- Google web fonts
+    ============================================ -->
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:600,700' %>
+</head>
+
+<body class="common-home res layout-5">
+    
+    <div id="wrapper" class="wrapper-fluid banners-effect-6">
+        <!-- Header Container  -->
+        <%= render "erp/bonnuoclongnhien/frontend/modules/header" %>
+        <!-- /Header Container  -->
+
+        <!-- Main Container  -->
+        <%= yield %>
+        <!-- /Main Container -->
+
+        <!-- Footer Container -->
+        <%= render "erp/bonnuoclongnhien/frontend/modules/footer" %>
+        <!-- /Footer Container -->
+    </div>
+
+    <%= render "erp/bonnuoclongnhien/frontend/modules/javascripts" %>
+
+</body>
+
+</html>

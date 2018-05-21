@@ -1,0 +1,18 @@
+<footer class="footer-container <% if params[:controller] == "erp/bonnuoclongnhien/frontend/home" && params[:action] == "index" %>typefooter-5<% else %>typefooter-1<% end %>">
+    <!-- Footer Top Container -->
+    <%= render "erp/bonnuoclongnhien/frontend/modules/footer/top" %>
+    <!-- /Footer Top Container -->
+</footer>
+<footer class="footer-container typefooter-5">    
+    <!-- Footer Center Container -->    
+    <%= render "erp/bonnuoclongnhien/frontend/modules/footer/center" %>
+    <!-- /Footer Center Container -->    
+            
+    <!-- Footer Bottom Container -->    
+    <%= render "erp/bonnuoclongnhien/frontend/modules/footer/bottom" %>
+    <!-- /Footer Bottom Container -->
+    
+    <!-- Back To Top-->
+    <%= render "erp/bonnuoclongnhien/frontend/modules/footer/back_to_top" %>
+    <!-- /Back To Top-->
+</footer>
