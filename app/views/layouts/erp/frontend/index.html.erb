@@ -1,72 +1,61 @@
 <!DOCTYPE html>
-<html lang="vi">
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <head>
-    <!-- Basic page needs
-    ============================================ -->
-    <title>Bồn Nước Long Nhiên - Công Ty TNHH Sản Xuất Thương Mại Dịch Vụ Phương Tùng</title>
+    <!-- Basic Page Needs
+    ================================================== -->
     <meta charset="utf-8">
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="Công Ty TNHH Sản Xuất Thương Mại Dịch Vụ Phương Tùng">
-    <meta name="robots" content="index, follow" />
+    <title>Trang Chủ - Công Ty TNHH Sản Xuất Thương Mại Dịch Vụ Phương Tùng</title>
 
-    <!-- Mobile specific metas
-    ============================================ -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- SEO Meta
+    ================================================== -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
 
-    <!-- Favicon
-    ============================================ -->
-    <%= favicon_link_tag '/longnhien/ico/favicon-16x16.png', rel: 'shortcut icon', rel: '/longnhien/image/png' %>
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- Libs CSS
-    ============================================ -->
-    <%= stylesheet_link_tag '/longnhien/css/bootstrap/css/bootstrap.min.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/font-awesome/css/font-awesome.min.css' %>
-    <%= stylesheet_link_tag '/longnhien/js/datetimepicker/bootstrap-datetimepicker.min.css' %>
-    <%= stylesheet_link_tag '/longnhien/js/owl-carousel/owl.carousel.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/lib.css' %>
-    <%= stylesheet_link_tag '/longnhien/js/jquery-ui/jquery-ui.min.css' %>
-    <%= stylesheet_link_tag '/longnhien/js/minicolors/miniColors.css' %>
+    <!-- CSS
+    ================================================== -->
+    <%= stylesheet_link_tag '/phuongtung/css/fontawesome-all.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/bootstrap.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/jquery-ui.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/owl.carousel.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/fotorama.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/magnific-popup.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/styles.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/responsive.css' %>
+    <%= stylesheet_link_tag '/phuongtung/css/custom.css' %>
 
-    <!-- Theme CSS
-    ============================================ -->
-    <%= stylesheet_link_tag '/longnhien/css/themecss/so_searchpro.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/so_megamenu.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/so-categories.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/so-listing-tabs.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/so-newletter-popup.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/themecss/slick.css' %>
     
-    <%= stylesheet_link_tag '/longnhien/css/footer/footer5.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/header/header5.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/home5.css', id: 'color_scheme' %>
-    <%= stylesheet_link_tag '/longnhien/css/responsive.css' %>
-    <%= stylesheet_link_tag '/longnhien/css/custom.css' %>
-
-    <!-- Google web fonts
-    ============================================ -->
-    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Raleway:600,700' %>
+    <%= favicon_link_tag '/phuongtung/images/favicon.png', rel: 'shortcut icon' %>
+    <%= favicon_link_tag '/phuongtung/images/apple-touch-icon.png', rel: 'shortcut icon' %>
+    <%= favicon_link_tag '/phuongtung/images/apple-touch-icon-72x72.png', rel: 'shortcut icon', size: '72x72' %>
+    <%= favicon_link_tag '/phuongtung/images/apple-touch-icon-114x114.png', rel: 'shortcut icon', size: '114x114' %>
 </head>
 
-<body class="common-home res layout-5">
-    
-    <div id="wrapper" class="wrapper-fluid banners-effect-6">
-        <!-- Header Container  -->
-        <%= render "erp/bonnuoclongnhien/frontend/modules/header" %>
-        <!-- /Header Container  -->
-
-        <!-- Main Container  -->
+<body class="<%= @body_class %>">
+    <div class="se-pre-con"></div>
+    <div class="main">
+        <!-- HEADER START -->
+        <%= render 'erp/bonnuoclongnhien/frontend/modules/header' %>
+        <!-- HEADER END -->
+        
+        <!-- CONTAIN START -->
         <%= yield %>
-        <!-- /Main Container -->
+        <!-- CONTAIN END -->
 
-        <!-- Footer Container -->
-        <%= render "erp/bonnuoclongnhien/frontend/modules/footer" %>
-        <!-- /Footer Container -->
+        <!-- FOOTER START -->
+        <%= render 'erp/bonnuoclongnhien/frontend/modules/footer' %>
+        <%= render 'erp/bonnuoclongnhien/frontend/modules/scroll_up' %>
+        <!-- FOOTER END -->
     </div>
-
-    <%= render "erp/bonnuoclongnhien/frontend/modules/javascripts" %>
-
+    <%= render 'erp/bonnuoclongnhien/frontend/modules/javascripts' %>
 </body>
 
 </html>

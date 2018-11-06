@@ -1,0 +1,61 @@
+<div class="container position-s">
+    <div class="row m-0">
+        <div class="col-xl-2 col-lg-3 col-6 col-xl-10per left-sm p-0">
+            <div class="header-middle-left">
+                <div class="navbar-header float-none-sm">
+                    <%= link_to image_tag('/phuongtung/images/logo.png', alt: ''), erp_bonnuoclongnhien.root_path, title: '', class: 'navbar-brand page-scroll' %>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-4 col-6 col-xl-10per p-0">
+            <div class="right-side header-right-link">
+                <ul>                                    
+                    <li class="side-toggle">
+                        <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa-bar"></i></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-5 col-lg-5 menu-position col-xl-80per p-0  position-initial">
+            <div id="menu" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><%= link_to 'Trang Chủ', erp_bonnuoclongnhien.root_path, title: '' %></li>
+                    <li><%= link_to 'Giới Thiệu', erp_bonnuoclongnhien.about_us_path, title: '' %></li>
+                    <% Erp::Menus::Menu.get_menus.each do |menu| %>
+                        <li class="level dropdown">
+                            <span class="opener plus"></span>
+                            <a href="<%= erp_bonnuoclongnhien.product_listing_path(menu_id: menu.id, title: url_friendly(menu.name)) %>" class="page-scroll" title="<%= menu.name %>">
+                                <%= menu.name %>
+                                <div class="menu-label"><span class="hot-menu">Hot</span></div>
+                            </a>
+                            <div class="megamenu mobile-sub-menu">
+                                <div class="megamenu-inner-top">
+                                    <ul class="sub-menu-level1">
+                                        <% menu.children.each do |child_1| %>
+                                            <li class="level2">                                                
+                                                <a href="javascript:void(0);" title="<%= child_1.name %>">
+                                                    <span><%= child_1.name %></span>
+                                                </a>                                                
+                                                <ul class="sub-menu-level2 ">
+                                                    <% child_1.children.each do |child_2| %>
+                                                        <li class="level3">
+                                                            <a href="<%= child_2.description %>" title="<%= child_2.name %>">
+                                                                <i class="fa fa-angle-right"></i>
+                                                                <%= child_2.name %>
+                                                            </a>
+                                                        </li>
+                                                    <% end %>
+                                                </ul>                                                
+                                            </li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    <% end %>
+                    <li><%= link_to 'Liên Hệ', erp_bonnuoclongnhien.contact_us_path, title: '' %></li>
+                </ul>                                
+            </div>
+        </div>
+    </div>
+</div>

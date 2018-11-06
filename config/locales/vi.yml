@@ -1,0 +1,9 @@
+vi:
+  erp:
+    products:
+      backend:
+        products:
+          form:
+            capacity: "Dung tích bồn"
+            enter_capacity: "Nhập dung tích bồn"
+                        

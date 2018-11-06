@@ -1,0 +1,139 @@
+<!-- BreadCrumb Start -->
+<div class="banner inner-banner1 ">
+    <div class="container">
+        <section class="banner-detail center-xs">
+            <h1 class="banner-title">Bồn Nhựa Long Nhiên Dạng Đứng</h1>
+            <div class="bread-crumb right-side float-none-xs">
+                <ul>
+                    <li><%= link_to 'Trang Chủ', erp_bonnuoclongnhien.root_path, title: '' %><i class="fa fa-angle-right"></i></li>
+                    <li><span><%= @menu.name %></span></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</div>
+<!-- BreadCrumb End -->
+
+<section class="pt-20 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 col-lg-3 mb-sm-30 col-xl-20per">
+                <div class="sidebar-block">
+                    <div class="sidebar-box listing-box mb-40">
+                        <span class="opener plus"></span>
+                        <div class="sidebar-title">
+                            <h3><span>Dung Tích Chứa</span></h3>
+                        </div>
+                        <div class="sidebar-contant">
+                            <ul>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 500 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 1000 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 1500 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 2000 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 2500 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check-box">
+                                        <span>
+                                            <input type="checkbox" class="checkbox" id="" name="">
+                                            <label for="clothing">Dung tích 3000 lít</label>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-box mb-40 d-none d-lg-block">
+                        <%= link_to image_tag('/phuongtung/images/left-banner.jpg', alt: ''), '', title: '' %>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-xl-10 col-lg-9 col-xl-80per">
+                <div class="product-listing grid-type">
+                    <div class="inner-listing">
+                        <div class="row">
+                            <% @products.each do |product| %>
+                                <div class="col-xl-3 col-lg-4 col-md-4 col-6 item-width mb-30">
+                                    <div class="product-item">
+                                        <div class="row">
+                                            <div class="img-col col-12">
+                                                <div class="product-image">
+                                                    <%= link_to image_tag('/phuongtung/images/product/1.png', alt: ''), erp_bonnuoclongnhien.product_detail_path, title: '' %>
+                                                </div>
+                                            </div>
+                                            <div class="detail-col col-12">
+                                                <div class="product-details">
+                                                    <div class="product-item-details">
+                                                        <div class="product-item-name">
+                                                            <%= link_to product.name, erp_bonnuoclongnhien.product_detail_path, title: '' %>
+                                                        </div>
+                                                        <div class="rating-summary-block">
+                                                            <div class="rating-result" title="90%">
+                                                                <span style="width:90%"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="price-box">
+                                                            <span class="price"><%= format_price(product.price) %></span>
+                                                            <!--<del class="price old-price">2.800.000đ</del>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="pagination-bar">
+                                    <ul>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-left"></i></a></li>
+                                        <li class="active"><a href="javascript:void(0)">1</a></li>
+                                        <li><a href="javascript:void(0)">2</a></li>
+                                        <li><a href="javascript:void(0)">3</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-angle-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
