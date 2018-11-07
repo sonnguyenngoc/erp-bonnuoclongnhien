@@ -1,0 +1,4303 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.13
+-- Dumped by pg_dump version 9.5.13
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO sonnn0811;
+
+--
+-- Name: erp_contact_groups_price_lists; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_contact_groups_price_lists (
+    id integer NOT NULL,
+    price_list_id integer,
+    contact_group_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_contact_groups_price_lists OWNER TO sonnn0811;
+
+--
+-- Name: erp_contact_groups_price_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_contact_groups_price_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_contact_groups_price_lists_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_contact_groups_price_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_contact_groups_price_lists_id_seq OWNED BY public.erp_contact_groups_price_lists.id;
+
+
+--
+-- Name: erp_editor_uploads; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_editor_uploads (
+    id integer NOT NULL,
+    image_url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_editor_uploads OWNER TO sonnn0811;
+
+--
+-- Name: erp_editor_uploads_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_editor_uploads_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_editor_uploads_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_editor_uploads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_editor_uploads_id_seq OWNED BY public.erp_editor_uploads.id;
+
+
+--
+-- Name: erp_menus_menus; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_menus_menus (
+    id integer NOT NULL,
+    name character varying,
+    parent_id integer,
+    style_icon character varying,
+    style_color character varying,
+    image_url_1 character varying,
+    image_url_2 character varying,
+    menu_icon character varying,
+    image_menu_link_1 character varying,
+    image_menu_link_2 character varying,
+    description text,
+    meta_keywords text,
+    meta_description text,
+    is_hot boolean DEFAULT false,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    brand_group_id integer,
+    custom_order integer,
+    level integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    brand_id integer,
+    image_menu character varying,
+    image_menu_title character varying,
+    image_menu_link character varying,
+    cache_search text,
+    is_show_detail boolean DEFAULT true,
+    number_per_page integer DEFAULT 12,
+    use_filter boolean DEFAULT false
+);
+
+
+ALTER TABLE public.erp_menus_menus OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_menus_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_menus_menus_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_menus_menus_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_menus_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_menus_menus_id_seq OWNED BY public.erp_menus_menus.id;
+
+
+--
+-- Name: erp_menus_menus_products_categories; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_menus_menus_products_categories (
+    id integer NOT NULL,
+    menu_id integer,
+    category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_menus_menus_products_categories OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_menus_products_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_menus_menus_products_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_menus_menus_products_categories_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_menus_products_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_menus_menus_products_categories_id_seq OWNED BY public.erp_menus_menus_products_categories.id;
+
+
+--
+-- Name: erp_menus_related_menus; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_menus_related_menus (
+    id integer NOT NULL,
+    parent_id integer,
+    menu_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_menus_related_menus OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_related_menus_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_menus_related_menus_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_menus_related_menus_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_menus_related_menus_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_menus_related_menus_id_seq OWNED BY public.erp_menus_related_menus.id;
+
+
+--
+-- Name: erp_products_accessories; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_accessories (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_accessories OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_accessories_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_accessories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_accessories_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_accessories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_accessories_id_seq OWNED BY public.erp_products_accessories.id;
+
+
+--
+-- Name: erp_products_accessory_details; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_accessory_details (
+    id integer NOT NULL,
+    product_id integer,
+    accessory_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_accessory_details OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_accessory_details_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_accessory_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_accessory_details_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_accessory_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_accessory_details_id_seq OWNED BY public.erp_products_accessory_details.id;
+
+
+--
+-- Name: erp_products_brand_group_details; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_brand_group_details (
+    id integer NOT NULL,
+    brand_id integer,
+    brand_group_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_brand_group_details OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brand_group_details_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_brand_group_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_brand_group_details_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brand_group_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_brand_group_details_id_seq OWNED BY public.erp_products_brand_group_details.id;
+
+
+--
+-- Name: erp_products_brand_groups; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_brand_groups (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_brand_groups OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brand_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_brand_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_brand_groups_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brand_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_brand_groups_id_seq OWNED BY public.erp_products_brand_groups.id;
+
+
+--
+-- Name: erp_products_brands; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_brands (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    image_url character varying,
+    is_main boolean DEFAULT false,
+    cache_search text
+);
+
+
+ALTER TABLE public.erp_products_brands OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brands_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_brands_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_brands_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_brands_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_brands_id_seq OWNED BY public.erp_products_brands.id;
+
+
+--
+-- Name: erp_products_cache_stocks; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_cache_stocks (
+    id bigint NOT NULL,
+    product_id bigint,
+    state_id bigint,
+    warehouse_id bigint,
+    stock integer DEFAULT 0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_cache_stocks OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_cache_stocks_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_cache_stocks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_cache_stocks_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_cache_stocks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_cache_stocks_id_seq OWNED BY public.erp_products_cache_stocks.id;
+
+
+--
+-- Name: erp_products_categories; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_categories (
+    id integer NOT NULL,
+    name character varying,
+    parent_id integer,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    custom_order integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_categories OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_categories_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_categories_id_seq OWNED BY public.erp_products_categories.id;
+
+
+--
+-- Name: erp_products_categories_pgroups; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_categories_pgroups (
+    id integer NOT NULL,
+    category_id integer,
+    property_group_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_categories_pgroups OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_categories_pgroups_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_categories_pgroups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_categories_pgroups_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_categories_pgroups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_categories_pgroups_id_seq OWNED BY public.erp_products_categories_pgroups.id;
+
+
+--
+-- Name: erp_products_comments; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_comments (
+    id integer NOT NULL,
+    message text,
+    parent_id integer,
+    archived boolean DEFAULT false,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_comments OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_comments_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_comments_id_seq OWNED BY public.erp_products_comments.id;
+
+
+--
+-- Name: erp_products_customer_taxes; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_customer_taxes (
+    id integer NOT NULL,
+    product_id integer,
+    tax_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_customer_taxes OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_customer_taxes_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_customer_taxes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_customer_taxes_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_customer_taxes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_customer_taxes_id_seq OWNED BY public.erp_products_customer_taxes.id;
+
+
+--
+-- Name: erp_products_damage_record_details; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_damage_record_details (
+    id integer NOT NULL,
+    quantity integer DEFAULT 1,
+    note text,
+    product_id integer,
+    damage_record_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    state_id bigint
+);
+
+
+ALTER TABLE public.erp_products_damage_record_details OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_damage_record_details_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_damage_record_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_damage_record_details_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_damage_record_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_damage_record_details_id_seq OWNED BY public.erp_products_damage_record_details.id;
+
+
+--
+-- Name: erp_products_damage_records; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_damage_records (
+    id integer NOT NULL,
+    code character varying,
+    date timestamp without time zone,
+    description text,
+    status character varying,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    warehouse_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    employee_id bigint,
+    confirmed_at timestamp without time zone
+);
+
+
+ALTER TABLE public.erp_products_damage_records OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_damage_records_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_damage_records_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_damage_records_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_damage_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_damage_records_id_seq OWNED BY public.erp_products_damage_records.id;
+
+
+--
+-- Name: erp_products_events; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_events (
+    id integer NOT NULL,
+    name character varying,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone,
+    image_url character varying,
+    description text,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_events OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_events_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_events_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_events_id_seq OWNED BY public.erp_products_events.id;
+
+
+--
+-- Name: erp_products_events_products; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_events_products (
+    id integer NOT NULL,
+    event_id integer,
+    product_id integer
+);
+
+
+ALTER TABLE public.erp_products_events_products OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_events_products_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_events_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_events_products_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_events_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_events_products_id_seq OWNED BY public.erp_products_events_products.id;
+
+
+--
+-- Name: erp_products_hkerp_products; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_hkerp_products (
+    id integer NOT NULL,
+    product_id integer,
+    hkerp_product_id integer,
+    price numeric DEFAULT 0.0,
+    stock integer DEFAULT 0,
+    data text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_hkerp_products OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_hkerp_products_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_hkerp_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_hkerp_products_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_hkerp_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_hkerp_products_id_seq OWNED BY public.erp_products_hkerp_products.id;
+
+
+--
+-- Name: erp_products_inventory_categories; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_inventory_categories (
+    id integer NOT NULL,
+    name character varying,
+    hot_name character varying,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    custom_order integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_inventory_categories OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_inventory_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_inventory_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_inventory_categories_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_inventory_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_inventory_categories_id_seq OWNED BY public.erp_products_inventory_categories.id;
+
+
+--
+-- Name: erp_products_inventory_products; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_inventory_products (
+    id integer NOT NULL,
+    image_url character varying,
+    name character varying,
+    price numeric DEFAULT 1.0,
+    gift character varying,
+    product_link character varying,
+    custom_order integer,
+    hot_category_name character varying,
+    is_stock boolean DEFAULT true,
+    archived boolean DEFAULT false,
+    inventory_category_id integer,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_inventory_products OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_inventory_products_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_inventory_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_inventory_products_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_inventory_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_inventory_products_id_seq OWNED BY public.erp_products_inventory_products.id;
+
+
+--
+-- Name: erp_products_manufacturings; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_manufacturings (
+    id integer NOT NULL,
+    code character varying,
+    manufacturing_date timestamp without time zone,
+    quantity integer DEFAULT 1,
+    is_auto_reduce_part_quantity boolean DEFAULT true,
+    note text,
+    status character varying,
+    product_id integer,
+    responsible_id integer,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_manufacturings OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_manufacturings_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_manufacturings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_manufacturings_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_manufacturings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_manufacturings_id_seq OWNED BY public.erp_products_manufacturings.id;
+
+
+--
+-- Name: erp_products_price_lists; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_price_lists (
+    id integer NOT NULL,
+    name character varying,
+    valid_from timestamp without time zone,
+    valid_to timestamp without time zone,
+    active boolean DEFAULT true,
+    all_warehouses boolean DEFAULT true,
+    all_users boolean DEFAULT true,
+    all_contact_groups boolean DEFAULT true,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_price_lists OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_price_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_price_lists_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_price_lists_id_seq OWNED BY public.erp_products_price_lists.id;
+
+
+--
+-- Name: erp_products_price_lists_users; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_price_lists_users (
+    id integer NOT NULL,
+    price_list_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_price_lists_users OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_users_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_price_lists_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_price_lists_users_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_price_lists_users_id_seq OWNED BY public.erp_products_price_lists_users.id;
+
+
+--
+-- Name: erp_products_price_lists_warehouses; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_price_lists_warehouses (
+    id integer NOT NULL,
+    price_list_id integer,
+    warehouse_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_price_lists_warehouses OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_warehouses_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_price_lists_warehouses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_price_lists_warehouses_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_price_lists_warehouses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_price_lists_warehouses_id_seq OWNED BY public.erp_products_price_lists_warehouses.id;
+
+
+--
+-- Name: erp_products_product_images; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_product_images (
+    id integer NOT NULL,
+    product_id integer,
+    image_url character varying,
+    created_at timestamp without time zone DEFAULT '2018-05-30 08:31:03.878886'::timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone DEFAULT '2018-05-30 08:31:03.878886'::timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_product_images OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_product_images_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_product_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_product_images_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_product_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_product_images_id_seq OWNED BY public.erp_products_product_images.id;
+
+
+--
+-- Name: erp_products_products; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_products (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    barcode character varying,
+    price numeric DEFAULT 1.0,
+    cost numeric DEFAULT 0.0,
+    on_hand numeric DEFAULT 0.0,
+    weight numeric DEFAULT 0.0,
+    volume numeric DEFAULT 0.0,
+    stock_min numeric DEFAULT 0.0,
+    stock_max numeric DEFAULT 999999.0,
+    description text,
+    short_description text,
+    is_deal boolean DEFAULT false,
+    is_new boolean DEFAULT false,
+    is_bestseller boolean DEFAULT false,
+    is_business_choices boolean DEFAULT false,
+    is_top_business_choices boolean DEFAULT false,
+    deal_price numeric,
+    deal_percent integer,
+    brand_id integer,
+    accessory_id integer,
+    events_note text,
+    meta_keywords text,
+    meta_description text,
+    deal_from_date timestamp without time zone,
+    deal_to_date timestamp without time zone,
+    internal_note text,
+    can_be_sold boolean DEFAULT true,
+    can_be_purchased boolean DEFAULT true,
+    is_for_pos boolean DEFAULT true,
+    point_enabled boolean DEFAULT true,
+    archived boolean DEFAULT false,
+    category_id integer,
+    unit_id integer,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    short_name character varying,
+    product_intro_link character varying,
+    cache_search text,
+    is_stock_inventory boolean DEFAULT false,
+    alias character varying,
+    is_sold_out boolean DEFAULT false,
+    cache_properties text,
+    cache_stock integer,
+    is_call boolean DEFAULT false
+);
+
+
+ALTER TABLE public.erp_products_products OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_gifts; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_products_gifts (
+    id integer NOT NULL,
+    product_id integer,
+    gift_id integer,
+    quantity integer DEFAULT 1,
+    price numeric DEFAULT 0.0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_products_gifts OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_gifts_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_products_gifts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_products_gifts_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_gifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_products_gifts_id_seq OWNED BY public.erp_products_products_gifts.id;
+
+
+--
+-- Name: erp_products_products_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_products_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_products_id_seq OWNED BY public.erp_products_products.id;
+
+
+--
+-- Name: erp_products_products_parts; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_products_parts (
+    id integer NOT NULL,
+    product_id integer,
+    part_id integer,
+    quantity integer DEFAULT 1,
+    total numeric DEFAULT 0.0,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_products_parts OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_parts_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_products_parts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_products_parts_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_parts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_products_parts_id_seq OWNED BY public.erp_products_products_parts.id;
+
+
+--
+-- Name: erp_products_products_units; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_products_units (
+    id integer NOT NULL,
+    product_id integer,
+    unit_id integer,
+    conversion_value numeric DEFAULT 1.0,
+    price numeric DEFAULT 0.0,
+    code character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_products_units OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_units_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_products_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_products_units_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_units_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_products_units_id_seq OWNED BY public.erp_products_products_units.id;
+
+
+--
+-- Name: erp_products_products_values; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_products_values (
+    id integer NOT NULL,
+    product_id integer,
+    properties_value_id integer
+);
+
+
+ALTER TABLE public.erp_products_products_values OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_values_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_products_values_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_products_values_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_products_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_products_values_id_seq OWNED BY public.erp_products_products_values.id;
+
+
+--
+-- Name: erp_products_properties; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_properties (
+    id integer NOT NULL,
+    name character varying,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    archived boolean DEFAULT false,
+    property_group_id integer,
+    is_show_list boolean,
+    is_show_detail boolean,
+    custom_order integer DEFAULT 0,
+    is_show_website boolean DEFAULT false
+);
+
+
+ALTER TABLE public.erp_products_properties OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_properties_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_properties_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_properties_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_properties_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_properties_id_seq OWNED BY public.erp_products_properties.id;
+
+
+--
+-- Name: erp_products_properties_values; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_properties_values (
+    id integer NOT NULL,
+    property_id integer,
+    value character varying,
+    is_show_website boolean DEFAULT false
+);
+
+
+ALTER TABLE public.erp_products_properties_values OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_properties_values_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_properties_values_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_properties_values_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_properties_values_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_properties_values_id_seq OWNED BY public.erp_products_properties_values.id;
+
+
+--
+-- Name: erp_products_property_groups; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_property_groups (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    custom_order integer DEFAULT 0
+);
+
+
+ALTER TABLE public.erp_products_property_groups OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_property_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_property_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_property_groups_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_property_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_property_groups_id_seq OWNED BY public.erp_products_property_groups.id;
+
+
+--
+-- Name: erp_products_ratings; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_ratings (
+    id integer NOT NULL,
+    content text,
+    star integer,
+    archived boolean DEFAULT true,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_ratings OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_ratings_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_ratings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_ratings_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_ratings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_ratings_id_seq OWNED BY public.erp_products_ratings.id;
+
+
+--
+-- Name: erp_products_state_check_details; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_state_check_details (
+    id bigint NOT NULL,
+    quantity integer DEFAULT 1,
+    note text,
+    state_id bigint,
+    product_id bigint,
+    state_check_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    old_state_id bigint
+);
+
+
+ALTER TABLE public.erp_products_state_check_details OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_state_check_details_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_state_check_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_state_check_details_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_state_check_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_state_check_details_id_seq OWNED BY public.erp_products_state_check_details.id;
+
+
+--
+-- Name: erp_products_state_checks; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_state_checks (
+    id bigint NOT NULL,
+    code character varying,
+    check_date timestamp without time zone,
+    note text,
+    status character varying DEFAULT 'draft'::character varying,
+    archived boolean DEFAULT false,
+    warehouse_id bigint,
+    employee_id bigint,
+    creator_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    confirmed_at timestamp without time zone
+);
+
+
+ALTER TABLE public.erp_products_state_checks OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_state_checks_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_state_checks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_state_checks_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_state_checks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_state_checks_id_seq OWNED BY public.erp_products_state_checks.id;
+
+
+--
+-- Name: erp_products_states; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_states (
+    id bigint NOT NULL,
+    name character varying,
+    description text,
+    status character varying DEFAULT 'draft'::character varying,
+    archived boolean DEFAULT false,
+    creator_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_states OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_states_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_states_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_states_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_states_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_states_id_seq OWNED BY public.erp_products_states.id;
+
+
+--
+-- Name: erp_products_stock_check_details; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_stock_check_details (
+    id integer NOT NULL,
+    quantity integer DEFAULT 1,
+    note text,
+    product_id integer,
+    stock_check_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    state_id bigint,
+    "real" integer,
+    stock integer
+);
+
+
+ALTER TABLE public.erp_products_stock_check_details OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_stock_check_details_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_stock_check_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_stock_check_details_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_stock_check_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_stock_check_details_id_seq OWNED BY public.erp_products_stock_check_details.id;
+
+
+--
+-- Name: erp_products_stock_checks; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_stock_checks (
+    id integer NOT NULL,
+    code character varying,
+    adjustment_date timestamp without time zone,
+    description text,
+    status character varying,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    warehouse_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    employee_id bigint,
+    confirmed_at timestamp without time zone
+);
+
+
+ALTER TABLE public.erp_products_stock_checks OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_stock_checks_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_stock_checks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_stock_checks_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_stock_checks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_stock_checks_id_seq OWNED BY public.erp_products_stock_checks.id;
+
+
+--
+-- Name: erp_products_units; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_units (
+    id integer NOT NULL,
+    name character varying,
+    archived boolean DEFAULT false,
+    creator_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_units OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_units_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_units_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_units_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_units_id_seq OWNED BY public.erp_products_units.id;
+
+
+--
+-- Name: erp_products_vendor_taxes; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_products_vendor_taxes (
+    id integer NOT NULL,
+    product_id integer,
+    tax_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.erp_products_vendor_taxes OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_vendor_taxes_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_products_vendor_taxes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_products_vendor_taxes_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_products_vendor_taxes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_products_vendor_taxes_id_seq OWNED BY public.erp_products_vendor_taxes.id;
+
+
+--
+-- Name: erp_user_groups; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_user_groups (
+    id bigint NOT NULL,
+    name character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    permissions text,
+    creator_id bigint
+);
+
+
+ALTER TABLE public.erp_user_groups OWNER TO sonnn0811;
+
+--
+-- Name: erp_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_user_groups_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_user_groups_id_seq OWNED BY public.erp_user_groups.id;
+
+
+--
+-- Name: erp_users; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.erp_users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    provider character varying,
+    uid character varying,
+    backend_access boolean DEFAULT false,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    name character varying,
+    avatar character varying,
+    timezone character varying,
+    active boolean DEFAULT false,
+    creator_id integer,
+    permissions text,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone DEFAULT now(),
+    confirmation_sent_at timestamp without time zone,
+    user_group_id bigint,
+    address character varying,
+    data text,
+    cache_search text
+);
+
+
+ALTER TABLE public.erp_users OWNER TO sonnn0811;
+
+--
+-- Name: erp_users_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.erp_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.erp_users_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: erp_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.erp_users_id_seq OWNED BY public.erp_users.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO sonnn0811;
+
+--
+-- Name: version_associations; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.version_associations (
+    id bigint NOT NULL,
+    version_id integer,
+    foreign_key_name character varying NOT NULL,
+    foreign_key_id integer
+);
+
+
+ALTER TABLE public.version_associations OWNER TO sonnn0811;
+
+--
+-- Name: version_associations_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.version_associations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.version_associations_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: version_associations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.version_associations_id_seq OWNED BY public.version_associations.id;
+
+
+--
+-- Name: versions; Type: TABLE; Schema: public; Owner: sonnn0811
+--
+
+CREATE TABLE public.versions (
+    id bigint NOT NULL,
+    item_type character varying NOT NULL,
+    item_id integer NOT NULL,
+    event character varying NOT NULL,
+    whodunnit character varying,
+    object text,
+    created_at timestamp without time zone,
+    transaction_id integer
+);
+
+
+ALTER TABLE public.versions OWNER TO sonnn0811;
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE; Schema: public; Owner: sonnn0811
+--
+
+CREATE SEQUENCE public.versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.versions_id_seq OWNER TO sonnn0811;
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: sonnn0811
+--
+
+ALTER SEQUENCE public.versions_id_seq OWNED BY public.versions.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_contact_groups_price_lists ALTER COLUMN id SET DEFAULT nextval('public.erp_contact_groups_price_lists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_editor_uploads ALTER COLUMN id SET DEFAULT nextval('public.erp_editor_uploads_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_menus ALTER COLUMN id SET DEFAULT nextval('public.erp_menus_menus_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_menus_products_categories ALTER COLUMN id SET DEFAULT nextval('public.erp_menus_menus_products_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_related_menus ALTER COLUMN id SET DEFAULT nextval('public.erp_menus_related_menus_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_accessories ALTER COLUMN id SET DEFAULT nextval('public.erp_products_accessories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_accessory_details ALTER COLUMN id SET DEFAULT nextval('public.erp_products_accessory_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brand_group_details ALTER COLUMN id SET DEFAULT nextval('public.erp_products_brand_group_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brand_groups ALTER COLUMN id SET DEFAULT nextval('public.erp_products_brand_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brands ALTER COLUMN id SET DEFAULT nextval('public.erp_products_brands_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_cache_stocks ALTER COLUMN id SET DEFAULT nextval('public.erp_products_cache_stocks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_categories ALTER COLUMN id SET DEFAULT nextval('public.erp_products_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_categories_pgroups ALTER COLUMN id SET DEFAULT nextval('public.erp_products_categories_pgroups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_comments ALTER COLUMN id SET DEFAULT nextval('public.erp_products_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_customer_taxes ALTER COLUMN id SET DEFAULT nextval('public.erp_products_customer_taxes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_damage_record_details ALTER COLUMN id SET DEFAULT nextval('public.erp_products_damage_record_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_damage_records ALTER COLUMN id SET DEFAULT nextval('public.erp_products_damage_records_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_events ALTER COLUMN id SET DEFAULT nextval('public.erp_products_events_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_events_products ALTER COLUMN id SET DEFAULT nextval('public.erp_products_events_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_hkerp_products ALTER COLUMN id SET DEFAULT nextval('public.erp_products_hkerp_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_inventory_categories ALTER COLUMN id SET DEFAULT nextval('public.erp_products_inventory_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_inventory_products ALTER COLUMN id SET DEFAULT nextval('public.erp_products_inventory_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_manufacturings ALTER COLUMN id SET DEFAULT nextval('public.erp_products_manufacturings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists ALTER COLUMN id SET DEFAULT nextval('public.erp_products_price_lists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists_users ALTER COLUMN id SET DEFAULT nextval('public.erp_products_price_lists_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists_warehouses ALTER COLUMN id SET DEFAULT nextval('public.erp_products_price_lists_warehouses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_product_images ALTER COLUMN id SET DEFAULT nextval('public.erp_products_product_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products ALTER COLUMN id SET DEFAULT nextval('public.erp_products_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_gifts ALTER COLUMN id SET DEFAULT nextval('public.erp_products_products_gifts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_parts ALTER COLUMN id SET DEFAULT nextval('public.erp_products_products_parts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_units ALTER COLUMN id SET DEFAULT nextval('public.erp_products_products_units_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_values ALTER COLUMN id SET DEFAULT nextval('public.erp_products_products_values_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_properties ALTER COLUMN id SET DEFAULT nextval('public.erp_products_properties_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_properties_values ALTER COLUMN id SET DEFAULT nextval('public.erp_products_properties_values_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_property_groups ALTER COLUMN id SET DEFAULT nextval('public.erp_products_property_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_ratings ALTER COLUMN id SET DEFAULT nextval('public.erp_products_ratings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_state_check_details ALTER COLUMN id SET DEFAULT nextval('public.erp_products_state_check_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_state_checks ALTER COLUMN id SET DEFAULT nextval('public.erp_products_state_checks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_states ALTER COLUMN id SET DEFAULT nextval('public.erp_products_states_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_stock_check_details ALTER COLUMN id SET DEFAULT nextval('public.erp_products_stock_check_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_stock_checks ALTER COLUMN id SET DEFAULT nextval('public.erp_products_stock_checks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_units ALTER COLUMN id SET DEFAULT nextval('public.erp_products_units_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_vendor_taxes ALTER COLUMN id SET DEFAULT nextval('public.erp_products_vendor_taxes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_user_groups ALTER COLUMN id SET DEFAULT nextval('public.erp_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_users ALTER COLUMN id SET DEFAULT nextval('public.erp_users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.version_associations ALTER COLUMN id SET DEFAULT nextval('public.version_associations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.versions ALTER COLUMN id SET DEFAULT nextval('public.versions_id_seq'::regclass);
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	development	2018-05-21 08:19:08.518385	2018-05-21 08:19:08.518385
+\.
+
+
+--
+-- Data for Name: erp_contact_groups_price_lists; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_contact_groups_price_lists (id, price_list_id, contact_group_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_contact_groups_price_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_contact_groups_price_lists_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_editor_uploads; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_editor_uploads (id, image_url, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_editor_uploads_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_editor_uploads_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_menus_menus; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_menus_menus (id, name, parent_id, style_icon, style_color, image_url_1, image_url_2, menu_icon, image_menu_link_1, image_menu_link_2, description, meta_keywords, meta_description, is_hot, archived, creator_id, brand_group_id, custom_order, level, created_at, updated_at, brand_id, image_menu, image_menu_title, image_menu_link, cache_search, is_show_detail, number_per_page, use_filter) FROM stdin;
+4	Bồn Nằm Vuông	\N	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	4	1	2018-10-31 14:42:27.565875	2018-10-31 14:44:56.071392	\N	\N	\N	\N	bồn nằm vuông bon nam vuong	t	8	f
+3	Bồn Nằm Oval	\N	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	3	1	2018-10-31 14:42:10.125699	2018-10-31 14:42:10.125699	\N	\N	\N	\N	bồn nằm oval bon nam oval	t	8	f
+15	Chậu Tròn 3000L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	15	3	2018-10-31 15:29:33.444906	2018-10-31 15:29:33.444906	\N	\N	\N	\N	chậu tròn 3000l chau tron 3000l	t	0	f
+1	Chậu Nhựa	\N	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	1	1	2018-10-31 14:41:17.460625	2018-10-31 14:41:28.737817	\N	\N	\N	\N	chậu nhựa chau nhua	t	8	f
+2	Bồn Nhựa Đứng	\N	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	2	1	2018-10-31 14:41:51.651137	2018-10-31 14:41:51.651137	\N	\N	\N	\N	bồn nhựa đứng bon nhua dung	t	8	f
+6	Loại Chậu Vuông	1	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	6	2	2018-10-31 14:45:26.818828	2018-10-31 15:39:43.060841	\N	\N	\N	\N	loại chậu vuông loai chau vuong	t	8	f
+16	Chậu Tròn 4000L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	16	3	2018-10-31 15:30:10.650347	2018-10-31 15:30:10.650347	\N	\N	\N	\N	chậu tròn 4000l chau tron 4000l	t	0	f
+8	Chậu Tròn 300L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	8	3	2018-10-31 15:03:17.717244	2018-10-31 15:03:26.062106	\N	\N	\N	\N	chậu tròn 300l chau tron 300l	t	0	f
+24	Loại Bồn Nằm Oval	3	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	24	2	2018-10-31 15:48:18.062139	2018-10-31 15:48:18.062139	\N	\N	\N	\N	loại bồn nằm oval loai bon nam oval	t	0	f
+7	Loại Chậu Chữ Nhật	1	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	7	2	2018-10-31 14:45:46.214406	2018-10-31 15:39:46.170964	\N	\N	\N	\N	loại chậu chữ nhật loai chau chu nhat	t	8	f
+9	Chậu Tròn 500L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	9	3	2018-10-31 15:03:44.982641	2018-10-31 15:03:44.982641	\N	\N	\N	\N	chậu tròn 500l chau tron 500l	t	0	f
+17	Chậu Nhựa Vuông 300L	6	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	17	3	2018-10-31 15:30:34.154167	2018-10-31 15:30:34.154167	\N	\N	\N	\N	chậu nhựa vuông 300l chau nhua vuong 300l	t	0	f
+18	Chậu Nhựa Vuông 500L	6	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	18	3	2018-10-31 15:30:56.893288	2018-10-31 15:30:56.893288	\N	\N	\N	\N	chậu nhựa vuông 500l chau nhua vuong 500l	t	0	f
+31	Bồn Nằm Oval 800L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	31	3	2018-10-31 15:50:55.315846	2018-10-31 15:50:55.315846	\N	\N	\N	\N	bồn nằm oval 800l bon nam oval 800l	t	0	f
+25	Bồn Nằm Oval 300L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	25	3	2018-10-31 15:49:06.408974	2018-10-31 15:49:06.408974	\N	\N	\N	\N	bồn nằm oval 300l bon nam oval 300l	t	0	f
+21	Loại Bồn Nằm Vuông	4	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	21	2	2018-10-31 15:43:12.646103	2018-10-31 15:43:12.646103	\N	\N	\N	\N	loại bồn nằm vuông loai bon nam vuong	t	0	f
+19	Chậu Nhựa Vuông 1000L	6	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	19	3	2018-10-31 15:31:14.204948	2018-10-31 15:31:14.204948	\N	\N	\N	\N	chậu nhựa vuông 1000l chau nhua vuong 1000l	t	0	f
+39	Bồn Đứng 500L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	39	3	2018-11-01 15:07:04.623826	2018-11-01 15:07:04.623826	\N	\N	\N	\N	bồn đứng 500l bon dung 500l	t	0	f
+36	Bồn Đứng 200L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	36	3	2018-11-01 15:05:53.463745	2018-11-01 15:05:53.463745	\N	\N	\N	\N	bồn đứng 200l bon dung 200l	t	0	f
+20	Chậu Nhựa Chữ Nhật 150L	7	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	20	3	2018-10-31 15:31:49.270884	2018-10-31 15:31:49.270884	\N	\N	\N	\N	chậu nhựa chữ nhật 150l chau nhua chu nhat 150l	t	0	f
+26	Bồn Nằm Oval 350L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	26	3	2018-10-31 15:49:30.944703	2018-10-31 15:49:30.944703	\N	\N	\N	\N	bồn nằm oval 350l bon nam oval 350l	t	0	f
+10	Bồn Nằm Vuông 200L	21	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	10	3	2018-10-31 15:15:23.292948	2018-10-31 15:44:02.687644	\N	\N	\N	\N	bồn nằm vuông 200l bon nam vuong 200l	t	0	f
+32	Bồn Nằm Oval 1000L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	32	3	2018-10-31 15:51:11.874768	2018-10-31 15:51:11.874768	\N	\N	\N	\N	bồn nằm oval 1000l bon nam oval 1000l	t	0	f
+27	Bồn Nằm Oval 400L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	27	3	2018-10-31 15:49:46.582769	2018-10-31 15:49:46.582769	\N	\N	\N	\N	bồn nằm oval 400l bon nam oval 400l	t	0	f
+12	Chậu Tròn 1000L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	12	3	2018-10-31 15:27:50.349956	2018-10-31 15:28:22.647459	\N	\N	\N	\N	chậu tròn 1000l chau tron 1000l	t	0	f
+11	Bồn Nằm Vuông 400L	21	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	11	3	2018-10-31 15:16:17.34665	2018-10-31 15:44:07.173981	\N	\N	\N	\N	bồn nằm vuông 400l bon nam vuong 400l	t	0	f
+13	Chậu Tròn 1500L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	13	3	2018-10-31 15:28:56.260097	2018-10-31 15:28:56.260097	\N	\N	\N	\N	chậu tròn 1500l chau tron 1500l	t	0	f
+22	Bồn Nằm Vuông 600L	21	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	22	3	2018-10-31 15:45:11.23513	2018-10-31 15:45:11.23513	\N	\N	\N	\N	bồn nằm vuông 600l bon nam vuong 600l	t	0	f
+14	Chậu Tròn 2000L	5	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	14	3	2018-10-31 15:29:17.939364	2018-10-31 15:29:17.939364	\N	\N	\N	\N	chậu tròn 2000l chau tron 2000l	t	0	f
+28	Bồn Nằm Oval 500L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	28	3	2018-10-31 15:50:10.389958	2018-10-31 15:50:10.389958	\N	\N	\N	\N	bồn nằm oval 500l bon nam oval 500l	t	0	f
+5	Loại Chậu Tròn	1	\N	\N	\N	\N	\N	\N	\N				f	f	1	\N	5	2	2018-10-31 14:44:10.560951	2018-10-31 15:39:38.305112	\N	\N	\N	\N	loại chậu tròn loai chau tron	t	8	f
+33	Bồn Nằm Oval 1500L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	33	3	2018-10-31 15:51:24.800641	2018-10-31 15:51:24.800641	\N	\N	\N	\N	bồn nằm oval 1500l bon nam oval 1500l	t	0	f
+23	Bồn Nằm Vuông 1000L	21	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	23	3	2018-10-31 15:45:31.868959	2018-10-31 15:45:31.868959	\N	\N	\N	\N	bồn nằm vuông 1000l bon nam vuong 1000l	t	0	f
+29	Bồn Nằm Oval 600L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	29	3	2018-10-31 15:50:24.133587	2018-10-31 15:50:24.133587	\N	\N	\N	\N	bồn nằm oval 600l bon nam oval 600l	t	0	f
+41	Bồn Đứng 700L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	41	3	2018-11-01 15:07:58.285565	2018-11-01 15:07:58.285565	\N	\N	\N	\N	bồn đứng 700l bon dung 700l	t	0	f
+37	Bồn Đứng 300L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	37	3	2018-11-01 15:06:12.341217	2018-11-01 15:06:12.341217	\N	\N	\N	\N	bồn đứng 300l bon dung 300l	t	0	f
+30	Bồn Nằm Oval 700L	24	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	30	3	2018-10-31 15:50:40.749508	2018-10-31 15:50:40.749508	\N	\N	\N	\N	bồn nằm oval 700l bon nam oval 700l	t	0	f
+40	Bồn Đứng 600L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	40	3	2018-11-01 15:07:22.257599	2018-11-01 15:07:22.257599	\N	\N	\N	\N	bồn đứng 600l bon dung 600l	t	0	f
+38	Bồn Đứng 400L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	38	3	2018-11-01 15:06:35.862273	2018-11-01 15:06:35.862273	\N	\N	\N	\N	bồn đứng 400l bon dung 400l	t	0	f
+34	Loại Bồn Nhựa Đứng	2	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	34	2	2018-11-01 15:05:00.044164	2018-11-01 15:09:10.234861	\N	\N	\N	\N	loại bồn nhựa đứng loai bon nhua dung	t	0	f
+43	Bồn Đứng 1000L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	43	3	2018-11-01 15:08:44.617758	2018-11-01 15:08:44.617758	\N	\N	\N	\N	bồn đứng 1000l bon dung 1000l	t	0	f
+42	Bồn Đứng 800L	34	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	42	3	2018-11-01 15:08:17.893589	2018-11-01 15:08:17.893589	\N	\N	\N	\N	bồn đứng 800l bon dung 800l	t	0	f
+44	Bồn Đứng 1500L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	44	3	2018-11-01 15:09:54.958174	2018-11-01 15:09:54.958174	\N	\N	\N	\N	bồn đứng 1500l bon dung 1500l	t	0	f
+45	Bồn Đứng 2000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	45	3	2018-11-01 15:10:16.912792	2018-11-01 15:10:16.912792	\N	\N	\N	\N	bồn đứng 2000l bon dung 2000l	t	0	f
+46	Bồn Đứng 3000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	46	3	2018-11-01 15:11:51.208582	2018-11-01 15:11:51.208582	\N	\N	\N	\N	bồn đứng 3000l bon dung 3000l	t	0	f
+47	Bồn Đứng 4000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	47	3	2018-11-01 15:12:48.055835	2018-11-01 15:12:48.055835	\N	\N	\N	\N	bồn đứng 4000l bon dung 4000l	t	0	f
+48	Bồn Đứng 5000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	48	3	2018-11-01 15:13:06.343056	2018-11-01 15:13:06.343056	\N	\N	\N	\N	bồn đứng 5000l bon dung 5000l	t	0	f
+49	Bồn Đứng 7000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	49	3	2018-11-01 15:13:21.226847	2018-11-01 15:13:21.226847	\N	\N	\N	\N	bồn đứng 7000l bon dung 7000l	t	0	f
+50	Bồn Đứng 10000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	50	3	2018-11-01 15:13:38.839954	2018-11-01 15:13:38.839954	\N	\N	\N	\N	bồn đứng 10000l bon dung 10000l	t	0	f
+51	Bồn Đứng Lùn 1000L	35	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	51	3	2018-11-01 15:14:03.991381	2018-11-01 15:14:03.991381	\N	\N	\N	\N	bồn đứng lùn 1000l bon dung lun 1000l	t	0	f
+35	Loại Bồn Nhựa Đứng	2	\N	\N	\N	\N	\N	\N	\N	\\			f	f	1	\N	35	2	2018-11-01 15:05:22.900959	2018-11-01 15:18:25.625338	\N	\N	\N	\N	loại bồn nhựa đứng loai bon nhua dung	t	0	f
+\.
+
+
+--
+-- Name: erp_menus_menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_menus_menus_id_seq', 51, true);
+
+
+--
+-- Data for Name: erp_menus_menus_products_categories; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_menus_menus_products_categories (id, menu_id, category_id, created_at, updated_at) FROM stdin;
+4	2	1	2018-10-31 14:41:51.661475	2018-10-31 14:41:51.661475
+5	3	3	2018-10-31 14:42:10.13577	2018-10-31 14:42:10.13577
+6	4	2	2018-10-31 14:42:27.575601	2018-10-31 14:42:27.575601
+7	5	5	2018-10-31 14:44:10.57192	2018-10-31 14:44:10.57192
+8	6	4	2018-10-31 14:45:26.829475	2018-10-31 14:45:26.829475
+9	7	4	2018-10-31 14:45:46.245197	2018-10-31 14:45:46.245197
+\.
+
+
+--
+-- Name: erp_menus_menus_products_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_menus_menus_products_categories_id_seq', 9, true);
+
+
+--
+-- Data for Name: erp_menus_related_menus; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_menus_related_menus (id, parent_id, menu_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_menus_related_menus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_menus_related_menus_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_accessories; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_accessories (id, name, description, archived, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_accessories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_accessories_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_accessory_details; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_accessory_details (id, product_id, accessory_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_accessory_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_accessory_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_brand_group_details; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_brand_group_details (id, brand_id, brand_group_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_brand_group_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_brand_group_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_brand_groups; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_brand_groups (id, name, description, archived, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_brand_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_brand_groups_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_brands; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_brands (id, name, description, archived, creator_id, created_at, updated_at, image_url, is_main, cache_search) FROM stdin;
+1	Long Nhiên		f	1	2018-10-31 14:20:31.319736	2018-10-31 14:20:31.319736	long-nhien.png	f	long nhiên long nhien
+\.
+
+
+--
+-- Name: erp_products_brands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_brands_id_seq', 1, true);
+
+
+--
+-- Data for Name: erp_products_cache_stocks; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_cache_stocks (id, product_id, state_id, warehouse_id, stock, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_cache_stocks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_cache_stocks_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_categories; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_categories (id, name, parent_id, archived, creator_id, custom_order, created_at, updated_at) FROM stdin;
+1	Bồn Nhựa Đứng	\N	f	1	1	2018-10-31 14:17:38.30785	2018-10-31 14:17:38.30785
+2	Bồn Nằm Vuông	\N	f	1	2	2018-10-31 14:18:48.188197	2018-10-31 14:18:53.471396
+3	Bồn Nằm Oval	\N	f	1	3	2018-10-31 14:19:02.780909	2018-10-31 14:19:02.780909
+4	Chậu Nhựa	\N	f	1	4	2018-10-31 14:19:12.602534	2018-10-31 14:19:12.602534
+5	Chậu Nhựa Tròn	4	f	1	5	2018-10-31 14:22:44.750584	2018-10-31 14:22:44.750584
+6	Chậu Nhựa Vuông	4	f	1	6	2018-10-31 14:22:56.99488	2018-10-31 14:22:56.99488
+7	Chậu Nhựa Chữ Nhật	4	f	1	7	2018-10-31 14:23:08.998562	2018-10-31 14:23:08.998562
+\.
+
+
+--
+-- Name: erp_products_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_categories_id_seq', 7, true);
+
+
+--
+-- Data for Name: erp_products_categories_pgroups; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_categories_pgroups (id, category_id, property_group_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_categories_pgroups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_categories_pgroups_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_comments; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_comments (id, message, parent_id, archived, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_customer_taxes; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_customer_taxes (id, product_id, tax_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_customer_taxes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_customer_taxes_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_damage_record_details; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_damage_record_details (id, quantity, note, product_id, damage_record_id, created_at, updated_at, state_id) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_damage_record_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_damage_record_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_damage_records; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_damage_records (id, code, date, description, status, archived, creator_id, warehouse_id, created_at, updated_at, employee_id, confirmed_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_damage_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_damage_records_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_events; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_events (id, name, from_date, to_date, image_url, description, archived, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_events_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_events_products; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_events_products (id, event_id, product_id) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_events_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_events_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_hkerp_products; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_hkerp_products (id, product_id, hkerp_product_id, price, stock, data, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_hkerp_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_hkerp_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_inventory_categories; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_inventory_categories (id, name, hot_name, archived, creator_id, custom_order, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_inventory_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_inventory_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_inventory_products; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_inventory_products (id, image_url, name, price, gift, product_link, custom_order, hot_category_name, is_stock, archived, inventory_category_id, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_inventory_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_inventory_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_manufacturings; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_manufacturings (id, code, manufacturing_date, quantity, is_auto_reduce_part_quantity, note, status, product_id, responsible_id, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_manufacturings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_manufacturings_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_price_lists; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_price_lists (id, name, valid_from, valid_to, active, all_warehouses, all_users, all_contact_groups, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_price_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_price_lists_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_price_lists_users; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_price_lists_users (id, price_list_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_price_lists_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_price_lists_users_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_price_lists_warehouses; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_price_lists_warehouses (id, price_list_id, warehouse_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_price_lists_warehouses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_price_lists_warehouses_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_product_images; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_product_images (id, product_id, image_url, created_at, updated_at) FROM stdin;
+1	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+2	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+3	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+4	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+5	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+6	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+7	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+8	1	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+9	2	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+10	2	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+11	2	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+12	2	\N	2018-05-30 08:31:03.878886	2018-05-30 08:31:03.878886
+\.
+
+
+--
+-- Name: erp_products_product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_product_images_id_seq', 12, true);
+
+
+--
+-- Data for Name: erp_products_products; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_products (id, name, code, barcode, price, cost, on_hand, weight, volume, stock_min, stock_max, description, short_description, is_deal, is_new, is_bestseller, is_business_choices, is_top_business_choices, deal_price, deal_percent, brand_id, accessory_id, events_note, meta_keywords, meta_description, deal_from_date, deal_to_date, internal_note, can_be_sold, can_be_purchased, is_for_pos, point_enabled, archived, category_id, unit_id, creator_id, created_at, updated_at, short_name, product_intro_link, cache_search, is_stock_inventory, alias, is_sold_out, cache_properties, cache_stock, is_call) FROM stdin;
+2	Chậu Nhựa Long Nhiên Dạng Tròn Dung Tích 300 Lít	LN-CNT-01	\N	820000.0	0.0	0.0	0.0	0.0	0.0	999999.0		\N	f	f	f	f	f	\N	\N	1	\N	\N			\N	\N	\N	t	t	t	t	f	5	\N	1	2018-10-31 14:30:53.280755	2018-10-31 14:30:53.280755		\N	ln-cnt-01 chậu nhựa long nhiên dạng tròn dung tích 300 lít  long nhiên chậu nhựa tròn ln-cnt-01 chau nhua long nhien dang tron dung tich 300 lit  long nhien chau nhua tron	f	chau-nhua-long-nhien-dang-tron-dung-tich-300-lit	f	{}	\N	f
+\.
+
+
+--
+-- Data for Name: erp_products_products_gifts; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_products_gifts (id, product_id, gift_id, quantity, price, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_products_gifts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_products_gifts_id_seq', 1, false);
+
+
+--
+-- Name: erp_products_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_products_id_seq', 2, true);
+
+
+--
+-- Data for Name: erp_products_products_parts; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_products_parts (id, product_id, part_id, quantity, total, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_products_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_products_parts_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_products_units; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_products_units (id, product_id, unit_id, conversion_value, price, code, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_products_units_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_products_units_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_products_values; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_products_values (id, product_id, properties_value_id) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_products_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_products_values_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_properties; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_properties (id, name, creator_id, created_at, updated_at, archived, property_group_id, is_show_list, is_show_detail, custom_order, is_show_website) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_properties_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_properties_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_properties_values; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_properties_values (id, property_id, value, is_show_website) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_properties_values_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_properties_values_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_property_groups; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_property_groups (id, name, description, archived, creator_id, created_at, updated_at, custom_order) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_property_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_property_groups_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_ratings; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_ratings (id, content, star, archived, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_ratings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_ratings_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_state_check_details; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_state_check_details (id, quantity, note, state_id, product_id, state_check_id, created_at, updated_at, old_state_id) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_state_check_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_state_check_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_state_checks; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_state_checks (id, code, check_date, note, status, archived, warehouse_id, employee_id, creator_id, created_at, updated_at, confirmed_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_state_checks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_state_checks_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_states; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_states (id, name, description, status, archived, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_states_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_states_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_stock_check_details; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_stock_check_details (id, quantity, note, product_id, stock_check_id, created_at, updated_at, state_id, "real", stock) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_stock_check_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_stock_check_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_stock_checks; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_stock_checks (id, code, adjustment_date, description, status, archived, creator_id, warehouse_id, created_at, updated_at, employee_id, confirmed_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_stock_checks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_stock_checks_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_units; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_units (id, name, archived, creator_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_units_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_units_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_products_vendor_taxes; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_products_vendor_taxes (id, product_id, tax_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: erp_products_vendor_taxes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_products_vendor_taxes_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_user_groups; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_user_groups (id, name, description, created_at, updated_at, permissions, creator_id) FROM stdin;
+\.
+
+
+--
+-- Name: erp_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_user_groups_id_seq', 1, false);
+
+
+--
+-- Data for Name: erp_users; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.erp_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, provider, uid, backend_access, created_at, updated_at, name, avatar, timezone, active, creator_id, permissions, confirmation_token, confirmed_at, confirmation_sent_at, user_group_id, address, data, cache_search) FROM stdin;
+1	admin@bonnuoclongnhien.com	$2a$11$Mh7Fx1DsY9TjShUCr1VVb.OlhGk0zRTMPHDQByAfOpPSzQm654Axu	\N	\N	\N	2	2018-11-01 15:03:53.965202	2018-10-31 13:41:27.37758	192.168.102.1	192.168.102.1	\N	\N	t	2018-10-31 13:35:18.198143	2018-11-01 15:03:53.968	Super Admin	\N	\N	t	\N	\N	\N	2018-10-30 13:35:17.842649	\N	\N	\N	\N	admin@bonnuoclongnhien.com super admin admin@bonnuoclongnhien.com super admin
+\.
+
+
+--
+-- Name: erp_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.erp_users_id_seq', 1, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20161123090102
+20161212042313
+20170313021641
+20170428012039
+20170503020426
+20171114165927
+20171114173408
+20171116080404
+20171207034705
+20180102025906
+20180509032724
+20180509034152
+20180509034153
+20161213071100
+20161214072617
+20161221024820
+20161221024829
+20170103071914
+20170103072046
+20170103093204
+20170104023936
+20170104065148
+20170105042643
+20170106013730
+20170110031613
+20170111035639
+20170111040158
+20170114034218
+20170119090211
+20170221072555
+20170221072639
+20170221073558
+20170221073630
+20170313082527
+20170321070037
+20170321070312
+20170321090317
+20170323014724
+20170327033631
+20170327034139
+20170405023252
+20170410091128
+20170411020636
+20170411090448
+20170411091221
+20170411100818
+20170412134024
+20170412150601
+20170413021722
+20170414011702
+20170414065806
+20170414072854
+20170427022435
+20170503100446
+20170508024134
+20170515034712
+20170516035200
+20170519094809
+20170529063930
+20170531015905
+20170620075258
+20170711082657
+20170711090318
+20170808075904
+20170811083138
+20170815074211
+20170815085024
+20170908080039
+20170920152426
+20170920152601
+20170920152630
+20170922094329
+20170925080147
+20170925080408
+20171031062216
+20171101030951
+20171103034529
+20171204043243
+20171204063014
+20171204094443
+20180620015944
+20180912083002
+20180912085605
+20180912085615
+20181013024819
+20170313015745
+20170313034953
+20170318023519
+20170402015416
+20170420032624
+20170519165705
+20170704071756
+20170926042710
+\.
+
+
+--
+-- Data for Name: version_associations; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.version_associations (id, version_id, foreign_key_name, foreign_key_id) FROM stdin;
+1	1	creator_id	\N
+2	1	user_group_id	\N
+3	2	creator_id	\N
+4	2	user_group_id	\N
+5	3	creator_id	1
+6	3	parent_id	\N
+7	4	creator_id	1
+8	4	parent_id	\N
+9	5	creator_id	1
+10	5	parent_id	\N
+11	6	creator_id	1
+12	6	parent_id	\N
+13	7	creator_id	1
+14	7	parent_id	\N
+15	8	creator_id	1
+16	9	creator_id	1
+17	9	parent_id	4
+18	10	creator_id	1
+19	10	parent_id	4
+20	11	creator_id	1
+21	11	parent_id	4
+22	12	creator_id	1
+23	12	category_id	5
+24	12	brand_id	1
+25	12	accessory_id	\N
+26	12	unit_id	\N
+27	13	product_id	1
+28	14	product_id	1
+29	15	product_id	1
+30	16	product_id	1
+31	17	product_id	1
+32	18	product_id	1
+33	19	product_id	1
+34	20	product_id	1
+35	21	creator_id	1
+36	21	category_id	5
+37	21	brand_id	1
+38	21	accessory_id	\N
+39	21	unit_id	\N
+40	22	product_id	2
+41	23	product_id	2
+42	24	product_id	2
+43	25	product_id	2
+44	26	creator_id	\N
+45	26	user_group_id	\N
+\.
+
+
+--
+-- Name: version_associations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.version_associations_id_seq', 45, true);
+
+
+--
+-- Data for Name: versions; Type: TABLE DATA; Schema: public; Owner: sonnn0811
+--
+
+COPY public.versions (id, item_type, item_id, event, whodunnit, object, created_at, transaction_id) FROM stdin;
+1	Erp::User	1	create	\N	\N	2018-10-31 13:35:18.198143	1
+2	Erp::User	1	update	\N	---\nencrypted_password: "$2a$11$Mh7Fx1DsY9TjShUCr1VVb.OlhGk0zRTMPHDQByAfOpPSzQm654Axu"\nid: 1\nconfirmed_at: 2018-10-30 13:35:17.842649000 Z\ncurrent_sign_in_at: \nlast_sign_in_at: \ncurrent_sign_in_ip: \nlast_sign_in_ip: \nsign_in_count: 0\navatar: \nemail: admin@bonnuoclongnhien.com\nreset_password_token: \nreset_password_sent_at: \nremember_created_at: \nprovider: \nuid: \nbackend_access: true\ncreated_at: 2018-10-31 13:35:18.198143000 Z\nupdated_at: 2018-10-31 13:35:18.198143000 Z\nname: Super Admin\ntimezone: \nactive: true\ncreator_id: \npermissions: \nconfirmation_token: \nconfirmation_sent_at: \nuser_group_id: \naddress: \ndata: \ncache_search: admin@bonnuoclongnhien.com super admin admin@bonnuoclongnhien.com super\n  admin\n	2018-10-31 13:41:27.380155	2
+3	Erp::Products::Category	1	create	1	\N	2018-10-31 14:17:38.30785	3
+4	Erp::Products::Category	2	create	1	\N	2018-10-31 14:18:48.188197	4
+5	Erp::Products::Category	2	update	1	---\nid: 2\nname: Bồn Nhựa Nằm Vuông\nparent_id: \ncreator_id: 1\narchived: false\ncustom_order: 2\ncreated_at: 2018-10-31 14:18:48.188197000 Z\nupdated_at: 2018-10-31 14:18:48.188197000 Z\n	2018-10-31 14:18:53.471396	5
+6	Erp::Products::Category	3	create	1	\N	2018-10-31 14:19:02.780909	6
+7	Erp::Products::Category	4	create	1	\N	2018-10-31 14:19:12.602534	7
+8	Erp::Products::Brand	1	create	1	\N	2018-10-31 14:20:31.319736	8
+9	Erp::Products::Category	5	create	1	\N	2018-10-31 14:22:44.750584	9
+10	Erp::Products::Category	6	create	1	\N	2018-10-31 14:22:56.99488	10
+11	Erp::Products::Category	7	create	1	\N	2018-10-31 14:23:08.998562	11
+12	Erp::Products::Product	1	create	1	\N	2018-10-31 14:25:09.833742	12
+13	Erp::Products::ProductImage	1	create	1	\N	2018-05-30 08:31:03.878886	12
+14	Erp::Products::ProductImage	2	create	1	\N	2018-05-30 08:31:03.878886	12
+15	Erp::Products::ProductImage	3	create	1	\N	2018-05-30 08:31:03.878886	12
+16	Erp::Products::ProductImage	4	create	1	\N	2018-05-30 08:31:03.878886	12
+17	Erp::Products::ProductImage	5	create	1	\N	2018-05-30 08:31:03.878886	12
+18	Erp::Products::ProductImage	6	create	1	\N	2018-05-30 08:31:03.878886	12
+19	Erp::Products::ProductImage	7	create	1	\N	2018-05-30 08:31:03.878886	12
+20	Erp::Products::ProductImage	8	create	1	\N	2018-05-30 08:31:03.878886	12
+21	Erp::Products::Product	2	create	1	\N	2018-10-31 14:30:53.280755	21
+22	Erp::Products::ProductImage	9	create	1	\N	2018-05-30 08:31:03.878886	21
+23	Erp::Products::ProductImage	10	create	1	\N	2018-05-30 08:31:03.878886	21
+24	Erp::Products::ProductImage	11	create	1	\N	2018-05-30 08:31:03.878886	21
+25	Erp::Products::ProductImage	12	create	1	\N	2018-05-30 08:31:03.878886	21
+26	Erp::User	1	update	\N	---\nencrypted_password: "$2a$11$Mh7Fx1DsY9TjShUCr1VVb.OlhGk0zRTMPHDQByAfOpPSzQm654Axu"\nid: 1\nconfirmed_at: 2018-10-30 13:35:17.842649000 Z\ncurrent_sign_in_at: 2018-10-31 13:41:27.377580000 Z\nlast_sign_in_at: 2018-10-31 13:41:27.377580000 Z\ncurrent_sign_in_ip: 192.168.102.1\nlast_sign_in_ip: 192.168.102.1\nsign_in_count: 1\navatar: \nemail: admin@bonnuoclongnhien.com\nreset_password_token: \nreset_password_sent_at: \nremember_created_at: \nprovider: \nuid: \nbackend_access: true\ncreated_at: 2018-10-31 13:35:18.198143000 Z\nupdated_at: 2018-10-31 13:41:27.380155000 Z\nname: Super Admin\ntimezone: \nactive: true\ncreator_id: \npermissions: \nconfirmation_token: \nconfirmation_sent_at: \nuser_group_id: \naddress: \ndata: \ncache_search: admin@bonnuoclongnhien.com super admin admin@bonnuoclongnhien.com super\n  admin\n	2018-11-01 15:03:53.968	26
+\.
+
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: sonnn0811
+--
+
+SELECT pg_catalog.setval('public.versions_id_seq', 26, true);
+
+
+--
+-- Name: ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: erp_contact_groups_price_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_contact_groups_price_lists
+    ADD CONSTRAINT erp_contact_groups_price_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_editor_uploads_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_editor_uploads
+    ADD CONSTRAINT erp_editor_uploads_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_menus_menus_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_menus
+    ADD CONSTRAINT erp_menus_menus_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_menus_menus_products_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_menus_products_categories
+    ADD CONSTRAINT erp_menus_menus_products_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_menus_related_menus_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_menus_related_menus
+    ADD CONSTRAINT erp_menus_related_menus_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_accessories_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_accessories
+    ADD CONSTRAINT erp_products_accessories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_accessory_details_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_accessory_details
+    ADD CONSTRAINT erp_products_accessory_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_brand_group_details_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brand_group_details
+    ADD CONSTRAINT erp_products_brand_group_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_brand_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brand_groups
+    ADD CONSTRAINT erp_products_brand_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_brands_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_brands
+    ADD CONSTRAINT erp_products_brands_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_cache_stocks_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_cache_stocks
+    ADD CONSTRAINT erp_products_cache_stocks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_categories_pgroups_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_categories_pgroups
+    ADD CONSTRAINT erp_products_categories_pgroups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_categories
+    ADD CONSTRAINT erp_products_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_comments
+    ADD CONSTRAINT erp_products_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_customer_taxes_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_customer_taxes
+    ADD CONSTRAINT erp_products_customer_taxes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_damage_record_details_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_damage_record_details
+    ADD CONSTRAINT erp_products_damage_record_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_damage_records_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_damage_records
+    ADD CONSTRAINT erp_products_damage_records_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_events_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_events
+    ADD CONSTRAINT erp_products_events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_events_products_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_events_products
+    ADD CONSTRAINT erp_products_events_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_hkerp_products_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_hkerp_products
+    ADD CONSTRAINT erp_products_hkerp_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_inventory_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_inventory_categories
+    ADD CONSTRAINT erp_products_inventory_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_inventory_products_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_inventory_products
+    ADD CONSTRAINT erp_products_inventory_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_manufacturings_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_manufacturings
+    ADD CONSTRAINT erp_products_manufacturings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_price_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists
+    ADD CONSTRAINT erp_products_price_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_price_lists_users_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists_users
+    ADD CONSTRAINT erp_products_price_lists_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_price_lists_warehouses_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_price_lists_warehouses
+    ADD CONSTRAINT erp_products_price_lists_warehouses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_product_images_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_product_images
+    ADD CONSTRAINT erp_products_product_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_products_gifts_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_gifts
+    ADD CONSTRAINT erp_products_products_gifts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_products_parts_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_parts
+    ADD CONSTRAINT erp_products_products_parts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_products_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products
+    ADD CONSTRAINT erp_products_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_products_units_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_units
+    ADD CONSTRAINT erp_products_products_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_products_values_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_products_values
+    ADD CONSTRAINT erp_products_products_values_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_properties_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_properties
+    ADD CONSTRAINT erp_products_properties_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_properties_values_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_properties_values
+    ADD CONSTRAINT erp_products_properties_values_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_property_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_property_groups
+    ADD CONSTRAINT erp_products_property_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_ratings
+    ADD CONSTRAINT erp_products_ratings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_state_check_details_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_state_check_details
+    ADD CONSTRAINT erp_products_state_check_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_state_checks_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_state_checks
+    ADD CONSTRAINT erp_products_state_checks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_states_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_states
+    ADD CONSTRAINT erp_products_states_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_stock_check_details_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_stock_check_details
+    ADD CONSTRAINT erp_products_stock_check_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_stock_checks_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_stock_checks
+    ADD CONSTRAINT erp_products_stock_checks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_units_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_units
+    ADD CONSTRAINT erp_products_units_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_products_vendor_taxes_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_products_vendor_taxes
+    ADD CONSTRAINT erp_products_vendor_taxes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_user_groups
+    ADD CONSTRAINT erp_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: erp_users_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.erp_users
+    ADD CONSTRAINT erp_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: version_associations_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.version_associations
+    ADD CONSTRAINT version_associations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: versions_pkey; Type: CONSTRAINT; Schema: public; Owner: sonnn0811
+--
+
+ALTER TABLE ONLY public.versions
+    ADD CONSTRAINT versions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_erp_contact_groups_price_lists_on_contact_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_contact_groups_price_lists_on_contact_group_id ON public.erp_contact_groups_price_lists USING btree (contact_group_id);
+
+
+--
+-- Name: index_erp_contact_groups_price_lists_on_price_list_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_contact_groups_price_lists_on_price_list_id ON public.erp_contact_groups_price_lists USING btree (price_list_id);
+
+
+--
+-- Name: index_erp_menus_menus_on_brand_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_menus_on_brand_group_id ON public.erp_menus_menus USING btree (brand_group_id);
+
+
+--
+-- Name: index_erp_menus_menus_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_menus_on_creator_id ON public.erp_menus_menus USING btree (creator_id);
+
+
+--
+-- Name: index_erp_menus_menus_products_categories_on_category_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_menus_products_categories_on_category_id ON public.erp_menus_menus_products_categories USING btree (category_id);
+
+
+--
+-- Name: index_erp_menus_menus_products_categories_on_menu_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_menus_products_categories_on_menu_id ON public.erp_menus_menus_products_categories USING btree (menu_id);
+
+
+--
+-- Name: index_erp_menus_related_menus_on_menu_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_related_menus_on_menu_id ON public.erp_menus_related_menus USING btree (menu_id);
+
+
+--
+-- Name: index_erp_menus_related_menus_on_parent_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_menus_related_menus_on_parent_id ON public.erp_menus_related_menus USING btree (parent_id);
+
+
+--
+-- Name: index_erp_products_accessories_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_accessories_on_creator_id ON public.erp_products_accessories USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_accessory_details_on_accessory_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_accessory_details_on_accessory_id ON public.erp_products_accessory_details USING btree (accessory_id);
+
+
+--
+-- Name: index_erp_products_accessory_details_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_accessory_details_on_product_id ON public.erp_products_accessory_details USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_brand_group_details_on_brand_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_brand_group_details_on_brand_group_id ON public.erp_products_brand_group_details USING btree (brand_group_id);
+
+
+--
+-- Name: index_erp_products_brand_group_details_on_brand_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_brand_group_details_on_brand_id ON public.erp_products_brand_group_details USING btree (brand_id);
+
+
+--
+-- Name: index_erp_products_brand_groups_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_brand_groups_on_creator_id ON public.erp_products_brand_groups USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_brands_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_brands_on_creator_id ON public.erp_products_brands USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_cache_stocks_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_cache_stocks_on_product_id ON public.erp_products_cache_stocks USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_cache_stocks_on_state_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_cache_stocks_on_state_id ON public.erp_products_cache_stocks USING btree (state_id);
+
+
+--
+-- Name: index_erp_products_cache_stocks_on_stock; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_cache_stocks_on_stock ON public.erp_products_cache_stocks USING btree (stock);
+
+
+--
+-- Name: index_erp_products_cache_stocks_on_warehouse_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_cache_stocks_on_warehouse_id ON public.erp_products_cache_stocks USING btree (warehouse_id);
+
+
+--
+-- Name: index_erp_products_categories_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_categories_on_creator_id ON public.erp_products_categories USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_categories_pgroups_on_category_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_categories_pgroups_on_category_id ON public.erp_products_categories_pgroups USING btree (category_id);
+
+
+--
+-- Name: index_erp_products_categories_pgroups_on_property_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_categories_pgroups_on_property_group_id ON public.erp_products_categories_pgroups USING btree (property_group_id);
+
+
+--
+-- Name: index_erp_products_comments_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_comments_on_product_id ON public.erp_products_comments USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_comments_on_user_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_comments_on_user_id ON public.erp_products_comments USING btree (user_id);
+
+
+--
+-- Name: index_erp_products_customer_taxes_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_customer_taxes_on_product_id ON public.erp_products_customer_taxes USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_customer_taxes_on_tax_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_customer_taxes_on_tax_id ON public.erp_products_customer_taxes USING btree (tax_id);
+
+
+--
+-- Name: index_erp_products_damage_record_details_on_damage_record_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_record_details_on_damage_record_id ON public.erp_products_damage_record_details USING btree (damage_record_id);
+
+
+--
+-- Name: index_erp_products_damage_record_details_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_record_details_on_product_id ON public.erp_products_damage_record_details USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_damage_record_details_on_state_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_record_details_on_state_id ON public.erp_products_damage_record_details USING btree (state_id);
+
+
+--
+-- Name: index_erp_products_damage_records_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_records_on_creator_id ON public.erp_products_damage_records USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_damage_records_on_employee_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_records_on_employee_id ON public.erp_products_damage_records USING btree (employee_id);
+
+
+--
+-- Name: index_erp_products_damage_records_on_warehouse_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_damage_records_on_warehouse_id ON public.erp_products_damage_records USING btree (warehouse_id);
+
+
+--
+-- Name: index_erp_products_events_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_events_on_creator_id ON public.erp_products_events USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_events_products_on_event_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_events_products_on_event_id ON public.erp_products_events_products USING btree (event_id);
+
+
+--
+-- Name: index_erp_products_events_products_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_events_products_on_product_id ON public.erp_products_events_products USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_hkerp_products_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_hkerp_products_on_product_id ON public.erp_products_hkerp_products USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_inventory_categories_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_inventory_categories_on_creator_id ON public.erp_products_inventory_categories USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_inventory_products_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_inventory_products_on_creator_id ON public.erp_products_inventory_products USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_inventory_products_on_inventory_category_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_inventory_products_on_inventory_category_id ON public.erp_products_inventory_products USING btree (inventory_category_id);
+
+
+--
+-- Name: index_erp_products_manufacturings_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_manufacturings_on_creator_id ON public.erp_products_manufacturings USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_manufacturings_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_manufacturings_on_product_id ON public.erp_products_manufacturings USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_manufacturings_on_responsible_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_manufacturings_on_responsible_id ON public.erp_products_manufacturings USING btree (responsible_id);
+
+
+--
+-- Name: index_erp_products_price_lists_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_price_lists_on_creator_id ON public.erp_products_price_lists USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_price_lists_users_on_price_list_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_price_lists_users_on_price_list_id ON public.erp_products_price_lists_users USING btree (price_list_id);
+
+
+--
+-- Name: index_erp_products_price_lists_users_on_user_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_price_lists_users_on_user_id ON public.erp_products_price_lists_users USING btree (user_id);
+
+
+--
+-- Name: index_erp_products_price_lists_warehouses_on_price_list_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_price_lists_warehouses_on_price_list_id ON public.erp_products_price_lists_warehouses USING btree (price_list_id);
+
+
+--
+-- Name: index_erp_products_price_lists_warehouses_on_warehouse_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_price_lists_warehouses_on_warehouse_id ON public.erp_products_price_lists_warehouses USING btree (warehouse_id);
+
+
+--
+-- Name: index_erp_products_product_images_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_product_images_on_product_id ON public.erp_products_product_images USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_products_gifts_on_gift_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_gifts_on_gift_id ON public.erp_products_products_gifts USING btree (gift_id);
+
+
+--
+-- Name: index_erp_products_products_gifts_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_gifts_on_product_id ON public.erp_products_products_gifts USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_products_on_accessory_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_on_accessory_id ON public.erp_products_products USING btree (accessory_id);
+
+
+--
+-- Name: index_erp_products_products_on_brand_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_on_brand_id ON public.erp_products_products USING btree (brand_id);
+
+
+--
+-- Name: index_erp_products_products_on_category_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_on_category_id ON public.erp_products_products USING btree (category_id);
+
+
+--
+-- Name: index_erp_products_products_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_on_creator_id ON public.erp_products_products USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_products_on_unit_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_on_unit_id ON public.erp_products_products USING btree (unit_id);
+
+
+--
+-- Name: index_erp_products_products_parts_on_part_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_parts_on_part_id ON public.erp_products_products_parts USING btree (part_id);
+
+
+--
+-- Name: index_erp_products_products_parts_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_parts_on_product_id ON public.erp_products_products_parts USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_products_units_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_units_on_product_id ON public.erp_products_products_units USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_products_units_on_unit_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_units_on_unit_id ON public.erp_products_products_units USING btree (unit_id);
+
+
+--
+-- Name: index_erp_products_products_values_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_values_on_product_id ON public.erp_products_products_values USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_products_values_on_properties_value_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_products_values_on_properties_value_id ON public.erp_products_products_values USING btree (properties_value_id);
+
+
+--
+-- Name: index_erp_products_properties_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_properties_on_creator_id ON public.erp_products_properties USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_properties_on_property_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_properties_on_property_group_id ON public.erp_products_properties USING btree (property_group_id);
+
+
+--
+-- Name: index_erp_products_properties_values_on_property_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_properties_values_on_property_id ON public.erp_products_properties_values USING btree (property_id);
+
+
+--
+-- Name: index_erp_products_property_groups_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_property_groups_on_creator_id ON public.erp_products_property_groups USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_ratings_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_ratings_on_product_id ON public.erp_products_ratings USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_ratings_on_user_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_ratings_on_user_id ON public.erp_products_ratings USING btree (user_id);
+
+
+--
+-- Name: index_erp_products_state_check_details_on_old_state_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_check_details_on_old_state_id ON public.erp_products_state_check_details USING btree (old_state_id);
+
+
+--
+-- Name: index_erp_products_state_check_details_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_check_details_on_product_id ON public.erp_products_state_check_details USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_state_check_details_on_state_check_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_check_details_on_state_check_id ON public.erp_products_state_check_details USING btree (state_check_id);
+
+
+--
+-- Name: index_erp_products_state_check_details_on_state_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_check_details_on_state_id ON public.erp_products_state_check_details USING btree (state_id);
+
+
+--
+-- Name: index_erp_products_state_checks_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_checks_on_creator_id ON public.erp_products_state_checks USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_state_checks_on_employee_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_checks_on_employee_id ON public.erp_products_state_checks USING btree (employee_id);
+
+
+--
+-- Name: index_erp_products_state_checks_on_warehouse_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_state_checks_on_warehouse_id ON public.erp_products_state_checks USING btree (warehouse_id);
+
+
+--
+-- Name: index_erp_products_states_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_states_on_creator_id ON public.erp_products_states USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_stock_check_details_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_check_details_on_product_id ON public.erp_products_stock_check_details USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_stock_check_details_on_state_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_check_details_on_state_id ON public.erp_products_stock_check_details USING btree (state_id);
+
+
+--
+-- Name: index_erp_products_stock_check_details_on_stock_check_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_check_details_on_stock_check_id ON public.erp_products_stock_check_details USING btree (stock_check_id);
+
+
+--
+-- Name: index_erp_products_stock_checks_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_checks_on_creator_id ON public.erp_products_stock_checks USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_stock_checks_on_employee_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_checks_on_employee_id ON public.erp_products_stock_checks USING btree (employee_id);
+
+
+--
+-- Name: index_erp_products_stock_checks_on_warehouse_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_stock_checks_on_warehouse_id ON public.erp_products_stock_checks USING btree (warehouse_id);
+
+
+--
+-- Name: index_erp_products_units_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_units_on_creator_id ON public.erp_products_units USING btree (creator_id);
+
+
+--
+-- Name: index_erp_products_vendor_taxes_on_product_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_vendor_taxes_on_product_id ON public.erp_products_vendor_taxes USING btree (product_id);
+
+
+--
+-- Name: index_erp_products_vendor_taxes_on_tax_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_products_vendor_taxes_on_tax_id ON public.erp_products_vendor_taxes USING btree (tax_id);
+
+
+--
+-- Name: index_erp_user_groups_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_user_groups_on_creator_id ON public.erp_user_groups USING btree (creator_id);
+
+
+--
+-- Name: index_erp_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE UNIQUE INDEX index_erp_users_on_confirmation_token ON public.erp_users USING btree (confirmation_token);
+
+
+--
+-- Name: index_erp_users_on_creator_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_users_on_creator_id ON public.erp_users USING btree (creator_id);
+
+
+--
+-- Name: index_erp_users_on_email; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE UNIQUE INDEX index_erp_users_on_email ON public.erp_users USING btree (email);
+
+
+--
+-- Name: index_erp_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE UNIQUE INDEX index_erp_users_on_reset_password_token ON public.erp_users USING btree (reset_password_token);
+
+
+--
+-- Name: index_erp_users_on_user_group_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_erp_users_on_user_group_id ON public.erp_users USING btree (user_group_id);
+
+
+--
+-- Name: index_version_associations_on_foreign_key; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_version_associations_on_foreign_key ON public.version_associations USING btree (foreign_key_name, foreign_key_id);
+
+
+--
+-- Name: index_version_associations_on_version_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_version_associations_on_version_id ON public.version_associations USING btree (version_id);
+
+
+--
+-- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_versions_on_item_type_and_item_id ON public.versions USING btree (item_type, item_id);
+
+
+--
+-- Name: index_versions_on_transaction_id; Type: INDEX; Schema: public; Owner: sonnn0811
+--
+
+CREATE INDEX index_versions_on_transaction_id ON public.versions USING btree (transaction_id);
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
